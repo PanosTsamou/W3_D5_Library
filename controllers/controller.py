@@ -45,30 +45,30 @@ def add_remove():
     if 'submit' in request.form:
         title= request.form['book-name']
         author= request.form['author-name']
-        gender= request.form['gender']
-        new_book = Book(title, author, gender)
+        genre= request.form['genre']
+        new_book = Book(title, author, genre)
         library_stock.add_a_book(new_book)
-        library_stock.all_genders()
+        library_stock.all_genres()
     else:
         rv_title = request.form['book-title']
         library_stock.remove_by_title(rv_title)
     return render_template('library.html', title = 'Books', library = library_stock) 
 
-@app.route('/books/sort/<gender>', methods=['POST','GET']) 
-def sorted_by_gender(gender):
+@app.route('/books/sort/<genre>', methods=['POST','GET']) 
+def sorted_by_genre(genre):
     if 'submit' in request.form:
         title= request.form['book-name']
         author= request.form['author-name']
         gender= request.form['gender']
         new_book = Book(title, author, gender)
         library_stock.add_a_book(new_book)
-        library_stock.all_genders()
+        library_stock.all_genres()
     elif 'remove' in request.form:
         rv_title = request.form['book-title']
         library_stock.remove_by_title(rv_title)
-        library_stock.all_genders()
+        library_stock.all_genres()
     
-    return render_template('sort_books.html', title = str(gender), library = library_stock, gender=gender)
+    return render_template('sort_books.html', title = str(genre), library = library_stock, genre=genre)
 # @app.route('/books/<index>', methods=['POST'])
 # def book_actions(index):
 #     print("here is the index" )

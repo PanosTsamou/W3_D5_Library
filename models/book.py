@@ -1,9 +1,9 @@
 class Book:
 
-    def __init__(self, input_title, input_author, input_gender):
+    def __init__(self, input_title, input_author, input_genre):
         self.title = input_title
         self.author = input_author
-        self. gender = input_gender
+        self. genre = input_genre
         self.book_checked = False
         self.review_list = {}
         self.synopsis = ""

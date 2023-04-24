@@ -2,12 +2,12 @@
 {% block content %}
     <div class="library-display">
         <aside class="sort">
-            <h2>Sort by Gender</h2>
+            <h2>Sort by Genre</h2>
             <nav>
                 <ul>
-                    {% for gender in library.genders %}
+                    {% for genre in library.genres %}
                     <li>
-                        <a href="/books/sort/{{gender}}">{{gender}}</a>
+                        <a href="/books/sort/{{genre}}">{{genre}}</a>
                     </li>
                     {% endfor %}
                 </ul>
@@ -19,7 +19,7 @@
                 <div class="book-details">
                     <h3>{{book.title}}</h3>
                     <p> Author:  {{book.author}}</p>
-                    <p> Gender:  {{book.gender}}</p>
+                    <p> Genre:  {{book.genre}}</p>
                     <div class="available">
                     {% if book.book_checked %}
                         <h3 class="available" style="background-color: red;">{{book.availability()}}</h3> 
@@ -35,20 +35,20 @@
         <aside class="add-remove">
             <div class="add-book">
                 <h2>Add a New Book Here</h2>
-                <form action="/books" method="post">
+                <form class="add-remove" action="/books" method="post">
                     <label for="book-name">Book Title</label>
                     <input type="text" name="book-name">
                     <label for="author-name">Author's Name</label>
                     <input type="text" name="author-name">
-                    <label for="gender">Gender</label>
-                    <input type="text"  name="gender">
+                    <label for="gender">Genre</label>
+                    <input type="text"  name="genre">
                     <input type="submit" name = 'submit' value="Submit">
                 </form>
             </div>
             <hr>
-            <div>
+            <div class="add-remove">
                 <h2>Remove Book by Title</h2>
-                <form action="/books" method="post">
+                <form class="add-remove" action="/books" method="post">
                     <label for="book-title">Title of The Book</label>
                     <input type="text" name="book-title">
                     <input type="submit" name = 'remove' value="Remove">

@@ -2,7 +2,7 @@ class LibBooks:
 
     def __init__(self):
         self.list_of_books = []
-        self.genders= set(())
+        self.genres= set(())
         
 
     def add_a_book(self, new_book):
@@ -19,7 +19,7 @@ class LibBooks:
             if book.title == rv_title:
                 self.list_of_books.remove(book)
 
-    def all_genders(self):
+    def all_genres(self):
         for book in self.list_of_books:
-            self.genders.add(book.gender)
+            self.genres.add(book.genre)
     
