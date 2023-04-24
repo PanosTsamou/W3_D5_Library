@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="library-display">
+        <aside class="sort">
+            <h2>Sort by Gender</h2>
+            <nav>
+                <ul>
+                    {% for gender in library.genders %}
+                    <li>
+                        <a href="/books/sort/{{gender}}">{{gender}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </aside>
+        <div class="books-display">
+            {% for book in  library.list_of_books%}
+                {% if book.gender == gender %}
+                <a class= "anch" href="/books/{{library.list_of_books.index(book)}}">
+                    <div class="book-details">
+                        <h3>{{book.title}}</h3>
+                        <p> Author:  {{book.author}}</p>
+                        <p> Gender:  {{book.gender}}</p>
+                        <div class="available">
+                            {% if book.book_checked %}
+                                <h3 class="available" style="background-color: red;">{{book.availability()}}</h3> 
+                            {% endif %}
+                            {% if book.book_checked == False %}
+                                <h3 class="available" style="background-color: green;">{{book.availability()}}</h3> 
+                            {% endif %}
+                        </div>
+                    </div>
+                </a> 
+                {% endif%}  
+            {% endfor %}
+        </div>
+        <aside class="add-remove">
+            <div class="add-book">
+                <h2>Add a New Book Here</h2>
+                <form action="/books/sort/{{gender}}" method="post">
+                    <label for="book-name">Book Title</label>
+                    <input type="text" name="book-name">
+                    <label for="author-name">Author's Name</label>
+                    <input type="text" name="author-name">
+                    <label for="gender">Gender</label>
+                    <input type="text"  name="gender">
+                    <input type="submit" name = 'submit' value="Submit">
+                </form>
+            </div>
+            <div>
+                <h2>Remove Book by Title:</h2>
+                <form action="/books/sort/{{gender}}" method="post">
+                    <label for="book-title">Title of The Book</label>
+                    <input type="text" name="book-title">
+                    <input type="submit" name = 'remove' value="Remove">
+                </form>
+            </div>
+        </aside>
+    </div>
+{% endblock %}

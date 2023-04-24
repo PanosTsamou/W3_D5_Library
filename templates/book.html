@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article>
+        <div class="all-info">
+            <div class="single-book-details">
+                <h2>{{book.title}}</h2>
+                <div class="author-img">
+                    <h4>{{book.author}}</h4>
+                    <img class="author-img" src="https://www.gtiarmoredcars.com/wp-content/uploads/2021/02/62681-flat-icons-face-computer-design-avatar-icon.png"  alt="{{book.author}}" width="80px">
+                </div>
+                <h4>{{book.availability()}}</h4>
+                <form action="/books/{{index}}" method="post">
+                    <label for="">Checked in: </label>
+                    {% if book.book_checked  == True  %}
+                        <input type='checkbox' name="check-in" id="check-in"  checked="true">
+                    {% endif %}
+                    {% if   book.book_checked == False %}
+                        <input type='checkbox' name="check-out" id="check-out" >
+                    {% endif %}
+                    <input type="submit" name = "change" value = "change">
+                </form>
+            </div>
+            <img class="book-img" src="https://www.freeiconspng.com/uploads/no-image-icon-6.png" alt="{{book.title}}">
+            <form class="mr-button" action="/books/{{index}}" method="post">
+                <input type="submit" name="remove" value="remove">
+            </form>
+        </div>
+        <hr>
+        <h3>Synopsis</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi iste sint saepe facilis autem officia distinctio magni nihil, ea quibusdam voluptatum aliquid dolorum numquam hic aperiam illum atque a est.</p>
+        <hr>
+        <div>
+            <h3>Reviews</h3>
+            <div class="all-reviews">
+                {% if book.review_list %}
+                    {% for review in book.review_list %}
+                        <div class="review">
+                            <p>{{book.review_list[review]['text']}}</p>
+                            <h4>{{book.review_list[review]['date']}}</h4>
+                            <h4>By: {{review}}</h4>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+        <div class="add-review">
+            <h3>Leave a Review Here</h3>
+            <form class="add-review" action="/books/{{index}}" method="post">
+                <textarea name="review-text" id="review-text" cols="20" rows="7"></textarea>
+                <div class="all-reviews">
+                    <label for="review-name">Your Name:</label>
+                </div>
+                <div class="all-reviews"> 
+                    <input  type="text" name="review-name">
+                </div>
+                <div class="all-reviews">
+                    <input type="submit" name="review" value="Submit Review">
+                </div>
+            </form>
+        </div>
+    </article>
+{% endblock %}

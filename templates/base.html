@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title> DIYShop - {{ title }} </title> 
+    {% else %}
+    <title> DIYShop </title>
+    {% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Hopping Letters</h1>
+        <nav class="main-menu">
+            <ul>
+                <li>
+                    <a href="/home">Home</a>
+                </li>
+                <li>
+                    <a href="/books">Books</a>
+                </li>
+                <li>
+                    <a href="/events">Events</a>
+                </li>
+                <li>
+                    <a href="/aboutus">About us</a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="container row">
+        <div class="footer-widget">
+            <h3>About this site</h3>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#">Site map</a>
+                    </li>
+                    <li>
+                        <a href="#">Guides for users</a>
+                    </li>
+                    <li>
+                        <a href="#">Site accessibility</a>
+                    </li>
+                    <li>
+                        <a href="#">Privacy</a>
+                    </li>
+                    <li>
+                        <a href="#">Use of cookies</a>
+                    </li>
+                    <li>
+                        <a href="#">Copyright</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-widget">
+            <h3>Quick links</h3>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/home">Home</a>
+                    </li>
+                    <li>
+                        <a href="/books">Books</a>
+                    </li>
+                    <li>
+                        <a href="/events">Events</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-widget">
+            <h3>Practical information</h3>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#">Opening hours</a>
+                    </li>
+                    <li>
+                        <a href="#">Location</a>
+                    </li>
+                    <li>
+                        <a href="#">Visitor Center</a>
+                    </li>
+                    <li>
+                        <a href="#">Panos Hall</a>
+                    </li>
+                    <li>
+                        <a href="#">Renting & copying services</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-widget">
+            <h3>About us</h3>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="aboutus">About us</a>
+                    </li>
+                    <li>
+                        <a href="#">Working at the Library</a>
+                    </li>
+                    <li>
+                        <a href="#">Support us</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <h3>Hopping Letters</h3>
+
+    </footer>
+    
+</body>
+</html>
