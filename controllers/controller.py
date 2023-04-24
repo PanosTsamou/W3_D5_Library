@@ -59,7 +59,7 @@ def sorted_by_genre(genre):
     if 'submit' in request.form:
         title= request.form['book-name']
         author= request.form['author-name']
-        gender= request.form['gender']
+        gender= request.form['genre']
         new_book = Book(title, author, gender)
         library_stock.add_a_book(new_book)
         library_stock.all_genres()

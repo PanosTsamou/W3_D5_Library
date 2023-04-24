@@ -37,19 +37,19 @@
         <aside class="add-remove">
             <div class="add-book">
                 <h2>Add a New Book Here</h2>
-                <form action="/books/sort/{{gender}}" method="post">
+                <form  class="add-remove" action="/books/sort/{{genre}}" method="post">
                     <label for="book-name">Book Title</label>
                     <input type="text" name="book-name">
                     <label for="author-name">Author's Name</label>
                     <input type="text" name="author-name">
-                    <label for="gender">Genre</label>
+                    <label for="genre">Genre</label>
                     <input type="text"  name="genre">
                     <input type="submit" name = 'submit' value="Submit">
                 </form>
             </div>
             <div>
                 <h2>Remove Book by Title:</h2>
-                <form action="/books/sort/{{genre}}" method="post">
+                <form class="add-remove" action="/books/sort/{{genre}}" method="post">
                     <label for="book-title">Title of The Book</label>
                     <input type="text" name="book-title">
                     <input type="submit" name = 'remove' value="Remove">
